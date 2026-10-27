@@ -234,7 +234,7 @@ final class ExchangeMatchingEngine:
 
     val acc1 = MockAccountState(
       accountNumber = "84920171",
-      hashValue     = "MOCKHASH84920171A1B2C3D4",
+      hashValue     = "MOCK_HASH_84920171_A1B2C3D4",
       nickName      = "Mock Primary Margin",
       accountType   = "MARGIN",
       initialCash   = 250000.0,
@@ -254,7 +254,7 @@ final class ExchangeMatchingEngine:
     )
     val acc2 = MockAccountState(
       accountNumber = "84920172",
-      hashValue     = "MOCKHASH84920172E5F6G7H8",
+      hashValue     = "MOCK_HASH_84920172_E5F6G7H8",
       nickName      = "Mock Tactical Options",
       accountType   = "MARGIN",
       initialCash   = 100000.0,
@@ -311,7 +311,7 @@ final class ExchangeMatchingEngine:
     Option(accountsByHash.get(clean))
       .orElse(accountsByHash.values().asScala.find(a => a.accountNumber == clean || a.hashValue.equalsIgnoreCase(clean)))
       .getOrElse {
-        val synthNum = if clean.forall(_.isDigit) && clean.length >= 4 then clean else s"8499${math.abs(clean.hashCode) % 10000}%04d"
+        val synthNum = if clean.forall(_.isDigit) && clean.length >= 4 then clean else f"8499${math.abs(clean.hashCode) % 10000}%04d"
         val created = MockAccountState(
           accountNumber = synthNum,
           hashValue     = clean,

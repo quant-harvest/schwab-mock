@@ -52,7 +52,7 @@ class SchwabMockServerSpec extends CatsEffectSuite:
   test("SchwabMockServer validates tick increments, executes limit order cancel/replace walk, and updates account positions on fill") {
     val engine = new ExchangeMatchingEngine()
     val app    = SchwabMockServer.routes(engine).orNotFound
-    val hash   = "MOCKHASH84920172E5F6G7H8"
+    val hash   = "MOCK_HASH_84920172_E5F6G7H8"
 
     // 1. Sub-penny price ($1.234) is rejected with HTTP 400
     val badTickPayload =
@@ -111,7 +111,7 @@ class SchwabMockServerSpec extends CatsEffectSuite:
     val engine = new ExchangeMatchingEngine()
     engine.setChaosConfig(ChaosConfig(simulateFillBeforeReplaceRace = true))
     val app  = SchwabMockServer.routes(engine).orNotFound
-    val hash = "MOCKHASH84920172E5F6G7H8"
+    val hash = "MOCK_HASH_84920172_E5F6G7H8"
 
     val passivePayload =
       """{
